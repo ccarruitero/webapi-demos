@@ -1,0 +1,20 @@
+{
+  "version": "0.0.1",
+  "name": "FxPay demo",
+  "origin": "app://fxpay.allizom.org",
+  "description": "Example of a packaged app that can do server-less in-app payments",
+  "developer": {
+      "name": "César Carruitero"
+   },
+  "launch_path": "/index.html",
+  "installs_allowed_from": ["*"],
+  "icons": {
+    "128": "/img/icon-128.png"
+  },
+  "permissions": {
+    "systemXHR": {
+      "description": "Required to access payment API"
+    }
+  },
+  "type": "privileged"
+}
