@@ -22,7 +22,7 @@
 
   function addProduct(product) {
     var el = document.createElement('li');
-    var products-wrap = $('products');
+    var productsWrap = $('products');
     var name = document.createElement('h3');
 
     name.innerHTML = product.name;
@@ -36,7 +36,7 @@
       el.appendChild(img);
     }
 
-    products-wrap.appendChild(el);
+    productsWrap.appendChild(el);
   }
 
   fxpay.init({
