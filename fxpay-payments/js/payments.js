@@ -100,7 +100,7 @@ fxpay.init({
   oninit: function() {
     console.log('fxpay initialized successfully');
     initPay();
-    setInterval(function() {
+    setTimeout(function() {
       setEvents();
     }, 3000);
   },
