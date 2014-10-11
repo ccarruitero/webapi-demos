@@ -55,34 +55,42 @@ function boughtProduct(productInfo) {
   var el = document.createElement('li');
   var name = document.createElement('h3');
 
-  name.innerHTML = product.name;
+  name.innerHTML = productInfo.name;
   el.appendChild(name);
-  productsWrap.appendChild(el);
+  productWrap.appendChild(el);
 }
 
 function setEvents() {
   console.log('first init get elements');
   var buyBtns = document.getElementsByClassName('fake-product');
-  console.log('get elements' + buyBtns);
-  buyBtns.forEach(function(btn) {
-    btn.onclick = function(e) {
-      console.log('set onclick event');
-      var i = e.target.getAttribute('data-index');
-      var product = productsData[i];
 
-      fxpay.purchase(product.productId, function(err, item) {
-        if (err) {
-          console.error('error purchasing product',
-                       (item && item.productId),
-                       'message:', err);
-          return showError(err);
-        }
-        console.log('product:', item.productId, item, 'purchased');
-        boughtProduct(item);
-      });
+  for (var i=0; i < buyBtns.length; i++) {
+    var btn = buyBtns[i];
+    console.log('set event in ' + i);
+
+    btn.onclick = function(e) {
+      buyEvent(e);
     };
-  });
+  }
+
   console.log('events setted');
+}
+
+function buyEvent(e) {
+  console.log('start onclick event');
+  var index = e.target.getAttribute('data-index');
+  var product = productsData[index];
+
+  fxpay.purchase(product.productId, function(err, item) {
+    if (err) {
+      console.error('error purchasing product',
+                   (item && item.productId),
+                   'message:', err);
+      return showError(err);
+    }
+    console.log('product:', item.productId, item, 'purchased');
+    boughtProduct(item);
+  });
 }
 
 fxpay.init({
