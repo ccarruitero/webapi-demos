@@ -16,6 +16,7 @@ function initPay() {
       console.info('got product:', productInfo);
       setProducts(productInfo, i);
     });
+    setEvents();
   });
 }
 
@@ -100,9 +101,6 @@ fxpay.init({
   oninit: function() {
     console.log('fxpay initialized successfully');
     initPay();
-    setTimeout(function() {
-      setEvents();
-    }, 3000);
   },
   onrestore: function(err, info) {
     if (err) {
